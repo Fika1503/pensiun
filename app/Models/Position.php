@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Opd extends Model
+class Position extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable =
-    [
-        'code',
+    protected $fillable = [
+        'user_id',
+        'opd_id',
         'name',
-        'alias',
+        'slug',
     ];
 
     public function user(): BelongsTo
