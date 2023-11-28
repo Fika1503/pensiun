@@ -7,29 +7,37 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Position extends Model
+class Pegawai extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'user_id',
         'opd_id',
+        'position_id',
+        'panggol_id',
+        'nip',
         'name',
-        'slug',
+        'address',
+        'birth_place',
+        'birth_date',
+        'period',
+        'no_hp',
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function opd(): BelongsTo
     {
         return $this->belongsTo(Opd::class);
     }
 
-    public function pegawai(): BelongsTo
+    public function position(): BelongsTo
     {
-        return $this->belongsTo(Pegawai::class);
+        return $this->belongsTo(Position::class);
+    }
+
+    public function panggol(): BelongsTo
+    {
+        return $this->belongsTo(PangGol::class);
     }
 }

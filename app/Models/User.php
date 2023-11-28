@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Opd;
+use App\Models\Pegawai;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,9 +20,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'opd_id',
+        'pegawai_id',
         'name',
+        'username',
         'email',
         'password',
+        'password_string',
     ];
 
     /**
@@ -47,5 +52,10 @@ class User extends Authenticatable
     public function opd()
     {
         return $this->belongsTo(Opd::class);
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class);
     }
 }

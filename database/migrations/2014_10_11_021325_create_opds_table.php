@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name')
                 ->comment('nama organisasi');
             $table->string('alias')
+                ->nullable()
                 ->comment('singkatan opd');
             $table->timestamps();
             $table->softDeletes();

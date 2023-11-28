@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Opd;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -12,8 +13,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('pang_gols', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->restrictOnDelete()
+                ->nullable()
+                ->comment('id table users');
             $table->foreignIdFor(Opd::class)
                 ->constrained()
                 ->cascadeOnUpdate()
@@ -22,20 +29,7 @@ return new class extends Migration
                 ->comment('id table opd');
             $table->string('name')
                 ->comment('nama');
-            $table->string('username')
-                ->unique()
-                ->comment('username');
-            $table->string('email')
-                ->unique()
-                ->comment('email aktif');
-            $table->timestamp('email_verified_at')
-                ->nullable()
-                ->comment('email verifikasi');
-            $table->string('password')
-                ->comment('password');
-            $table->string('password_string')
-                ->comment('password string');
-            $table->rememberToken();
+            $table->string('slug');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -46,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('pang_gols');
     }
 };
