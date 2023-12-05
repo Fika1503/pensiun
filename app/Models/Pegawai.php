@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pegawai extends Model
 {
@@ -46,5 +46,15 @@ class Pegawai extends Model
     public function pengajuan(): BelongsTo
     {
         return $this->belongsTo(Pengajuan::class);
+    }
+
+    public function suamiistri(): BelongsTo
+    {
+        return $this->belongsTo(SuamiIstri::class);
+    }
+
+    public function anak(): BelongsTo
+    {
+        return $this->belongsTo(Anak::class);
     }
 }

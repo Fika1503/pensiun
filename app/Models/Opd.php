@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Anak;
 use App\Models\PangGol;
 use App\Models\Pegawai;
 use App\Models\Document;
 use App\Models\JenisDoc;
 use App\Models\Position;
 use App\Models\Pengajuan;
+use App\Models\SuamiIstri;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -60,5 +62,15 @@ class Opd extends Model
     public function document()
     {
         return $this->hasMany(Document::class);
+    }
+
+    public function suamiistri()
+    {
+        return $this->hasMany(SuamiIstri::class);
+    }
+
+    public function anak()
+    {
+        return $this->hasMany(Anak::class);
     }
 }
