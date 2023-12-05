@@ -14,7 +14,7 @@ class Document extends Model
         'user_id',
         'opd_id',
         'pengajuan_id',
-        'jenisdoc_id',
+        'jenis_doc_id',
         'name',
         'file',
     ];
