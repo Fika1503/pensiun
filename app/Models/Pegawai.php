@@ -26,10 +26,8 @@ class Pegawai extends Model
     ];
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
-
     public function opd(): BelongsTo
     {
         return $this->belongsTo(Opd::class);
@@ -43,5 +41,10 @@ class Pegawai extends Model
     public function panggol(): BelongsTo
     {
         return $this->belongsTo(PangGol::class);
+    }
+
+    public function pengajuan(): BelongsTo
+    {
+        return $this->belongsTo(Pengajuan::class);
     }
 }

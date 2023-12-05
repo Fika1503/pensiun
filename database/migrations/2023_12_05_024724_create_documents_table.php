@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\JenisDoc;
 use App\Models\Opd;
+use App\Models\Pengajuan;
 use App\Models\User;
-use App\Models\Pegawai;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -14,7 +15,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengajuans', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)
                 ->constrained()
@@ -28,17 +29,23 @@ return new class extends Migration
                 ->restrictOnDelete()
                 ->nullable()
                 ->comment('id table opd');
-            $table->foreignIdFor(Pegawai::class)
+            $table->foreignIdFor(Pengajuan::class)
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->restrictOnDelete()
                 ->nullable()
-                ->comment('id table pegawai');
-            $table->date('date_pengajuan')
-                ->comment('tanggal pengajuan');
-            $table->boolean('status')
-                ->comment('status persetujuan')
-                ->default(0);
+                ->comment('id table pengajuan');
+            $table->foreignIdFor(JenisDoc::class)
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->restrictOnDelete()
+                ->nullable()
+                ->comment('id table jenis dokumen');
+            $table->string('name')
+                ->comment('nama');
+            $table->string('file')
+                ->comment('file')
+                ->comment('pdf, doc, xls, jpg, png, dll');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -49,6 +56,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengajuans');
+        Schema::dropIfExists('documents');
     }
 };

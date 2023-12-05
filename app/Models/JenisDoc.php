@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Position extends Model
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class JenisDoc extends Model
 {
     use HasFactory, SoftDeletes;
-
     protected $fillable = [
         'user_id',
         'opd_id',
@@ -28,8 +28,8 @@ class Position extends Model
         return $this->belongsTo(Opd::class);
     }
 
-    public function pegawai(): BelongsTo
+    public function document(): BelongsTo
     {
-        return $this->belongsTo(Pegawai::class);
+        return $this->belongsTo(Document::class);
     }
 }

@@ -16,10 +16,9 @@ class PangGol extends Model
         'name',
         'slug',
     ];
-
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function opd(): BelongsTo

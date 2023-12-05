@@ -2,20 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Position extends Model
+class Document extends Model
 {
     use HasFactory, SoftDeletes;
-
     protected $fillable = [
         'user_id',
         'opd_id',
+        'pengajuan_id',
+        'jenisdoc_id',
         'name',
-        'slug',
+        'file',
     ];
 
     public function user(): BelongsTo
@@ -28,8 +29,13 @@ class Position extends Model
         return $this->belongsTo(Opd::class);
     }
 
-    public function pegawai(): BelongsTo
+    public function jenisdoc(): BelongsTo
     {
-        return $this->belongsTo(Pegawai::class);
+        return $this->belongsTo(JenisDoc::class);
+    }
+
+    public function pengajuan(): BelongsTo
+    {
+        return $this->belongsTo(Pengajuan::class);
     }
 }
