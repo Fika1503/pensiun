@@ -16,6 +16,7 @@ class Opd extends Model
         'code',
         'name',
         'alias',
+        'address'
     ];
 
     public function user(): BelongsTo

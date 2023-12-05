@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('alias')
                 ->nullable()
                 ->comment('singkatan opd');
+            $table->string('address')
+                ->nullable()
+                ->comment('alamat opd');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -53,9 +53,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Opd::class);
     }
-
-    public function pegawai()
-    {
-        return $this->belongsTo(Pegawai::class);
-    }
 }

@@ -49,12 +49,12 @@ return new class extends Migration
                 ->comment('alamat pegawai');
             $table->string('birth_place')
                 ->comment('tempat lahir');
-            $table->string('birth_date')
+            $table->date('birth_date')
                 ->comment('tanggal lahir');
-            $table->string('period')
-                ->comment('masa jabatan');
             $table->string('no_hp')
                 ->comment('no hp ');
+            $table->date('pensiun_date')
+                ->comment('tanggal pensiun');
             $table->timestamps();
             $table->softDeletes();
         });

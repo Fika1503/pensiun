@@ -21,9 +21,13 @@ class Pegawai extends Model
         'address',
         'birth_place',
         'birth_date',
-        'period',
         'no_hp',
+        'pensiun_date',
     ];
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
 
     public function opd(): BelongsTo
